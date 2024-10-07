@@ -1,0 +1,80 @@
+<div *ngIf="isLoading; else movieDetails" class="loading-container">
+  <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #movieDetails>
+<mat-card *ngIf="movie">
+  <mat-card-header>
+    <mat-card-title>{{ movie.title }} (Episode {{ movie.episode_id }})</mat-card-title>
+    <mat-card-subtitle>Directed by {{ movie.director }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+    <p><strong>Producer(s):</strong> {{ movie.producer }}</p>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Opening Crawl</mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{ movie.opening_crawl }}</p>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Characters</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item *ngFor="let character of characters">
+          <a [routerLink]="['/character', extractIdFromUrl(character.url)]">{{ character.name }}</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Planets</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item *ngFor="let planet of planets">
+          {{ planet.name }}
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+
+        <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Starships</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item *ngFor="let starship of starships">
+          {{ starship.name }}
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Vehicles</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item *ngFor="let vehicle of vehicles">
+          {{ vehicle.name }}
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Species</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item *ngFor="let spec of species">
+          {{ spec.name }}
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-card-content>
+</mat-card>
+</ng-template>
+
