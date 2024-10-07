@@ -1,1 +1,22 @@
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center child elements horizontally */
+  justify-content: center; /* Center child elements vertically */
+  min-height: 100vh; /* Full height of the viewport */
+  text-align: center; /* Center text within child elements */
+}
+
+.loading-container {
+  /* Optional styles for loading state */
+  margin: 1rem 0; /* Space around loading spinner */
+}
+
+.movie-list-container {
+  margin-top: 1rem; /* Space between loading spinner and movie list */
+}
+
+.movie-list {
+  margin-top: 1rem; /* Space between title and movie list */
+}
 
