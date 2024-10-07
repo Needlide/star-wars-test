@@ -1,11 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 14px; line-height: 1.5; }
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 
 .loading-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height to center vertically */
+  height: 100vh;
+}
+
+mat-card {
+  margin: 32px;
+}
+
+mat-expansion-panel {
+  margin: 16px;
+}
+
+mat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media(min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media(min-width: 992px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+@media(min-width: 1200px) {
+  body {
+    font-size: 22px;
+  }
 }
