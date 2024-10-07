@@ -1,0 +1,36 @@
+<div *ngIf="isLoading; else characterDetails" class="loading-container">
+  <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #characterDetails>
+<mat-card *ngIf="character">
+  <mat-card-header>
+    <mat-card-title>{{ character.name }}</mat-card-title>
+    <mat-card-subtitle>Birth year: {{ character.birth_year }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>Height: {{ character.height }}</p>
+    <p>Weight: {{ character.mass }}</p>
+    <p>Hair color: {{ character.hair_color }}</p>
+    <p>Skin color: {{ character.skin_color }}</p>
+    <p>Eye color: {{ character.eye_color }}</p>
+    <p>Gender: {{ character.gender }}</p>
+    <p *ngIf="homeworld">Homeworld: {{ homeworld.name }}</p>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Movies</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item *ngFor="let movie of movies">
+          <a [routerLink]="['/movie', extractIdFromUrl(movie.url)]">{{ movie.title }}</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+
+     </mat-card-content>
+</mat-card>
+</ng-template>
+
+
