@@ -1,1 +1,10 @@
-<p>movie-list works!</p>
+<div *ngIf="isLoading; else movieList" class="loading-container">
+  <mat-spinner></mat-spinner>
+</div>
+<ng-template #movieList>
+  <mat-list>
+    <mat-list-item *ngFor="let movie of movies">
+      <a [routerLink]="['/movie', movie.episode_id]">{{ movie.title }}</a>
+    </mat-list-item>
+  </mat-list>
+</ng-template>
