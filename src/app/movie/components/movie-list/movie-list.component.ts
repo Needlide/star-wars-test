@@ -27,7 +27,7 @@ export class MovieListComponent {
     this.fetchMovies();
   }
 
-  fetchMovies(): void {
+  private fetchMovies(): void {
     this.isLoading = true;
 
     const movieRequests = [];

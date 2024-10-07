@@ -19,7 +19,7 @@ import { Character } from '../../../character/models/character.model';
     RouterModule,
     MatCardModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.scss'
