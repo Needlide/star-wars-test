@@ -4,7 +4,7 @@
 <ng-template #movieList>
   <mat-list>
     <mat-list-item *ngFor="let movie of movies">
-      <a [routerLink]="['/movie', movie.episode_id]">{{ movie.title }}</a>
+      <a [routerLink]="['/movie', extractIdFromUrl(movie.url)]">{{ movie.title }}</a>
     </mat-list-item>
   </mat-list>
 </ng-template>
