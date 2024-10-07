@@ -13,7 +13,7 @@ import { Observable, of, tap } from 'rxjs';
 })
 export class CachingService {
   private cachedMovies = new Map<number, Movie>();
-  private cachedCharacters = new Map<string, Character>();
+  private cachedCharacters = new Map<number, Character>();
   private cachedStarships = new Map<string, Starship>();
   private cachedPlanets = new Map<string, Planet>();
   private cachedVehicles = new Map<string, Vehicle>();
@@ -33,14 +33,14 @@ export class CachingService {
     }
   }
 
-  getCharacterByUrl(url: string): Observable<Character> {
-    const character = this.cachedCharacters.get(url);
+  getCharacterById(id: number): Observable<Character> {
+    const character = this.cachedCharacters.get(id);
 
     if (character) {
       return of(character);
     } else {
-      return this.dataService.getCharacterByUrl(url).pipe(
-        tap((character: Character) => this.cachedCharacters.set(url, character))
+      return this.dataService.getCharacterById(id).pipe(
+        tap((character: Character) => this.cachedCharacters.set(id, character))
       );
     }
   }

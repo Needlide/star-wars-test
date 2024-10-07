@@ -20,8 +20,8 @@ export class DataService {
     return this.http.get<Movie>(`${this.apiUrl}/films/${id}/`);
   }
 
-  getCharacterByUrl(url: string): Observable<Character> {
-    return this.http.get<Character>(url);
+  getCharacterById(id: number): Observable<Character> {
+    return this.http.get<Character>(`${this.apiUrl}/people/${id}/`);
   }
 
   getStarshipByUrl(url: string): Observable<Starship> {

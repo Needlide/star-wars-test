@@ -70,7 +70,7 @@ describe('DataService', () => {
     req.flush(dummyMovie);
   });
 
-    it('should retrieve a character by URL', () => {
+    it('should retrieve a character by ID', () => {
     const dummyCharacter: Character = {
       name: 'Luke Skywalker',
       height: '172',
@@ -96,7 +96,7 @@ describe('DataService', () => {
     url: 'https://swapi.dev/api/people/1/'
     };
 
-    service.getCharacterByUrl('https://swapi.dev/api/people/1/').subscribe(character => {
+    service.getCharacterById(1).subscribe(character => {
       expect(character).toEqual(dummyCharacter);
     });
 

@@ -17,7 +17,7 @@ describe('CachingService', () => {
   beforeEach(() => {
     const spy = jasmine.createSpyObj('DataService', [
       'getMovieById',
-      'getCharacterByUrl',
+      'getCharacterById',
       'getStarshipByUrl',
       'getPlanetByUrl',
       'getSpeciesByUrl',
@@ -93,7 +93,7 @@ describe('CachingService', () => {
     });
   });
 
-  describe('getCharacterByUrl', () => {
+  describe('getCharacterById', () => {
      it('should return a cached character if available', () => {
        const dummyCharacter: Character = {
         name: '',
@@ -114,15 +114,15 @@ describe('CachingService', () => {
         url: ''
       };
 
-      const url = 'https://swapi.dev/api/people/1/';
+      const id = 1;
 
-      service['cachedCharacters'].set(url, dummyCharacter); // Cache dummy character
+      service['cachedCharacters'].set(id, dummyCharacter); // Cache dummy character
 
-      service.getCharacterByUrl(url).subscribe(result => {
+      service.getCharacterById(id).subscribe(result => {
         expect(result).toEqual(dummyCharacter);
       });
 
-      expect(dataServiceSpy.getCharacterByUrl).not.toHaveBeenCalled();
+      expect(dataServiceSpy.getCharacterById).not.toHaveBeenCalled();
     });
 
     it('should fetch a character via API if not cached and cache it', () => {
@@ -145,16 +145,16 @@ describe('CachingService', () => {
         url: ''
       };
 
-      dataServiceSpy.getCharacterByUrl.and.returnValue(of(dummyCharacter));
+      dataServiceSpy.getCharacterById.and.returnValue(of(dummyCharacter));
 
-      const url = 'https://swapi.dev/api/people/1/';
+      const id = 1;
 
-      service.getCharacterByUrl(url).subscribe((result) => {
+      service.getCharacterById(id).subscribe((result) => {
         expect(result).toEqual(dummyCharacter);
-        expect(service['cachedCharacters'].get(url)).toEqual(dummyCharacter);
+        expect(service['cachedCharacters'].get(id)).toEqual(dummyCharacter);
       });
 
-      expect(dataServiceSpy.getCharacterByUrl).toHaveBeenCalledOnceWith(url);
+      expect(dataServiceSpy.getCharacterById).toHaveBeenCalledOnceWith(id);
     });
   });
 
